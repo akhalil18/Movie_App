@@ -4,12 +4,12 @@ import 'package:movies_app/movies/domain/repository/base_movie_repository.dart';
 
 import '../../../core/error/failure.dart';
 
-class GetTopRatedMoviesUsecase {
+class GetTopRatedMoviesUseCase {
   final BaseMovieRepository baseMovieRepository;
 
-  GetTopRatedMoviesUsecase(this.baseMovieRepository);
+  GetTopRatedMoviesUseCase(this.baseMovieRepository);
 
-  Future<Either<Failure, List<Movie>>> excute() async {
+  Future<Either<Failure, List<Movie>>> execute() async {
     return await baseMovieRepository.getTopRatedMovies();
   }
 }

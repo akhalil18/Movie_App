@@ -16,7 +16,7 @@ class MovieRemoteDataSource extends BaseMovieRemoteDataSource {
 
     if (response.statusCode == 200) {
       return List<MovieModel>.from(
-        (response.data as List).map((e) => MovieModel.fromJson(e)),
+        (response.data['results'] as List).map((e) => MovieModel.fromJson(e)),
       );
     } else {
       throw ServerException(errorMessageModel: response.data);
