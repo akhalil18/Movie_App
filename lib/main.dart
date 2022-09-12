@@ -15,10 +15,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Movies App',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: const MoviesScreen(),
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData(primarySwatch: Colors.blue, brightness: Brightness.dark),
+      home: const MainMoviesScreen(),
     );
   }
 }
