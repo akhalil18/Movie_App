@@ -4,6 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:movies_app/core/services/services_locator.dart';
 import 'package:movies_app/movies/presentation/components/popular_componets.dart';
 import 'package:movies_app/movies/presentation/controllers/movies_bloc.dart';
+import 'package:movies_app/movies/presentation/controllers/movies_event.dart';
 
 import '../components/now_playing_components.dart';
 import '../components/top_rated_components.dart';
@@ -14,7 +15,10 @@ class MainMoviesScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider<MoviesBloc>(
-      create: (context) => sl<MoviesBloc>(),
+      create: (context) => sl<MoviesBloc>()
+        ..add(GetNowPlayingMoviesEvent())
+        ..add(GetTopRatedMoviesEvent())
+        ..add(GetPopularMoviesEvent()),
       child: Scaffold(
         body: SingleChildScrollView(
           key: const Key('movieScrollView'),

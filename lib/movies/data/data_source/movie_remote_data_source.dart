@@ -28,7 +28,7 @@ class MovieRemoteDataSource extends BaseMovieRemoteDataSource {
     final response = await Dio().get(AppConstants.popularMoviesPath);
     if (response.statusCode == 200) {
       return List<MovieModel>.from(
-        (response.data as List).map((e) => MovieModel.fromJson(e)),
+        (response.data['results'] as List).map((e) => MovieModel.fromJson(e)),
       );
     } else {
       throw ServerException(errorMessageModel: response.data);
@@ -40,7 +40,7 @@ class MovieRemoteDataSource extends BaseMovieRemoteDataSource {
     final response = await Dio().get(AppConstants.topRatedMoviesPath);
     if (response.statusCode == 200) {
       return List<MovieModel>.from(
-        (response.data as List).map((e) => MovieModel.fromJson(e)),
+        (response.data['results'] as List).map((e) => MovieModel.fromJson(e)),
       );
     } else {
       throw ServerException(errorMessageModel: response.data);

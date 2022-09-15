@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:movies_app/core/services/services_locator.dart';
 
@@ -6,6 +8,7 @@ import 'movies/presentation/screens/movies_screen.dart';
 void main() {
   runApp(const MyApp());
   ServiceLocator().init();
+  HttpOverrides.global = MyHttpOverrides();
 }
 
 class MyApp extends StatelessWidget {
@@ -19,5 +22,15 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(primarySwatch: Colors.blue, brightness: Brightness.dark),
       home: const MainMoviesScreen(),
     );
+  }
+}
+
+class MyHttpOverrides extends HttpOverrides {
+  @override
+  HttpClient createHttpClient(SecurityContext? context) {
+    HttpClient client = super.createHttpClient(context); //<<--- notice 'super'
+    client.badCertificateCallback =
+        (X509Certificate cert, String host, int port) => true;
+    return client;
   }
 }

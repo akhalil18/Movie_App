@@ -13,7 +13,9 @@ final sl = GetIt.instance;
 class ServiceLocator {
   void init() {
     // Bloc
-    sl.registerFactory(() => MoviesBloc(sl()));
+    sl.registerFactory(
+      () => MoviesBloc(sl(), sl(), sl()),
+    );
 
     // Data Source
     sl.registerLazySingleton<BaseMovieRemoteDataSource>(

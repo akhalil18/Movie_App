@@ -17,7 +17,7 @@ class NowPlayingCompontets extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<MoviesBloc, MoviesState>(
       builder: (context, state) {
-        switch (state.requestState) {
+        switch (state.nowPlayingRequestState) {
           case RequestState.loading:
             return const SizedBox(
               height: 400,
@@ -34,7 +34,7 @@ class NowPlayingCompontets extends StatelessWidget {
                   viewportFraction: 1.0,
                   onPageChanged: (index, reason) {},
                 ),
-                items: moviesList.map(
+                items: state.nowPlayingMovies.map(
                   (item) {
                     return GestureDetector(
                       key: const Key('openMovieMinimalDetail'),
