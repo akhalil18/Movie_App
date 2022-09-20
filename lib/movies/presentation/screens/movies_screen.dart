@@ -25,7 +25,7 @@ class MainMoviesScreen extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const NowPlayingCompontets(),
+              const NowPlayingComponents(),
               Container(
                 margin: const EdgeInsets.fromLTRB(16.0, 24.0, 16.0, 8.0),
                 child: Row(
@@ -59,7 +59,7 @@ class MainMoviesScreen extends StatelessWidget {
                   ],
                 ),
               ),
-              const PopularComponets(),
+              const PopularComponents(),
               Container(
                 margin: const EdgeInsets.fromLTRB(
                   16.0,

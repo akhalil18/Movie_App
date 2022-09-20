@@ -8,14 +8,16 @@ import 'package:movies_app/movies/presentation/controllers/movies_state.dart';
 
 import '../../../core/utils/app_constants.dart';
 import '../../../core/utils/enums.dart';
-import '../../data/data_source/dummy.dart';
+import '../screens/movie_detail_screen.dart';
 
-class NowPlayingCompontets extends StatelessWidget {
-  const NowPlayingCompontets({super.key});
+class NowPlayingComponents extends StatelessWidget {
+  const NowPlayingComponents({super.key});
 
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<MoviesBloc, MoviesState>(
+      buildWhen: (oldState, newState) =>
+          oldState.nowPlayingRequestState != newState.nowPlayingRequestState,
       builder: (context, state) {
         switch (state.nowPlayingRequestState) {
           case RequestState.loading:
@@ -39,7 +41,10 @@ class NowPlayingCompontets extends StatelessWidget {
                     return GestureDetector(
                       key: const Key('openMovieMinimalDetail'),
                       onTap: () {
-                        /// TODO : NAVIGATE TO MOVIE DETAILS
+                        Navigator.of(context).push(MaterialPageRoute(
+                            builder: (ctx) => MovieDetailScreen(
+                                  id: item.id,
+                                )));
                       },
                       child: Stack(
                         children: [

@@ -11,5 +11,7 @@ class AppConstants {
 
   static const topRatedMoviesPath = '$baseUrl/movie/top_rated?api_key=$apiKey';
 
-  static movieDtails(String id) => '$baseUrl/movie/$id?api_key=$apiKey';
+  static movieDetailsPath(int id) => '$baseUrl/movie/$id?api_key=$apiKey';
+  static recommendationPath(int id) =>
+      '$baseUrl/movie/$id/recommendations?api_key=$apiKey';
 }

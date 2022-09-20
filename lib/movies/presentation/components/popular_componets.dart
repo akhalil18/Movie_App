@@ -9,12 +9,14 @@ import '../../../core/utils/enums.dart';
 import '../controllers/movies_bloc.dart';
 import '../controllers/movies_state.dart';
 
-class PopularComponets extends StatelessWidget {
-  const PopularComponets({super.key});
+class PopularComponents extends StatelessWidget {
+  const PopularComponents({super.key});
 
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<MoviesBloc, MoviesState>(
+      buildWhen: (oldState, newState) =>
+          oldState.popularRequestState != newState.popularRequestState,
       builder: (context, state) {
         switch (state.popularRequestState) {
           case RequestState.loading:
