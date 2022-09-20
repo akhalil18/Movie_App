@@ -2,11 +2,15 @@ import 'package:dio/dio.dart';
 import 'package:movies_app/core/error/exceptions.dart';
 import 'package:movies_app/core/utils/app_constants.dart';
 import 'package:movies_app/movies/data/models/movie_model.dart';
+import 'package:movies_app/movies/domain/entities/movie_details.dart';
+
+import '../models/movie_details_model.dart';
 
 abstract class BaseMovieRemoteDataSource {
   Future<List<MovieModel>> getNowPlayingMovies();
   Future<List<MovieModel>> getPopularMovies();
   Future<List<MovieModel>> getTopRatedMovies();
+  Future<List<MoviDetailsModel>> getMovieDetails();
 }
 
 class MovieRemoteDataSource extends BaseMovieRemoteDataSource {
@@ -45,5 +49,11 @@ class MovieRemoteDataSource extends BaseMovieRemoteDataSource {
     } else {
       throw ServerException(errorMessageModel: response.data);
     }
+  }
+
+  @override
+  Future<List<MoviDetailsModel>> getMovieDetails() {
+    // TODO: implement getMovieDetails
+    throw UnimplementedError();
   }
 }

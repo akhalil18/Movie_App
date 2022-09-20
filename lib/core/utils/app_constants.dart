@@ -10,4 +10,6 @@ class AppConstants {
   static const popularMoviesPath = '$baseUrl/movie/popular?api_key=$apiKey';
 
   static const topRatedMoviesPath = '$baseUrl/movie/top_rated?api_key=$apiKey';
+
+  static movieDtails(String id) => '$baseUrl/movie/$id?api_key=$apiKey';
 }
